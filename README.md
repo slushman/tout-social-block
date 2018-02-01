@@ -1,4 +1,4 @@
-# Tout.Social Block $
+# Tout.Social Block
 
 Tout.Social Block adds a social sharing buttons block to the new WordPress content editor.
 
@@ -23,4 +23,4 @@ Each button is able to be hidden individually and reordered to your preference.
 
 ## Thank You's
 
-This project used create-gutenberg-block and uses the Gutenberg editor. It is built with React.js.
+This project used [create-gutenberg-block](https://github.com/ahmadawais/create-guten-block) and uses the Gutenberg editor. It is built with React.js.
