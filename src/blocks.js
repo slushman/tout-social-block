@@ -10,4 +10,4 @@
  * this is the file that Webpack is compiling.
  */
 
-import './block/block.js';
+import './sharing-buttons-block/block.js';

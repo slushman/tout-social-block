@@ -13,7 +13,13 @@
  *
  * @since 					1.0.0
  * @package 				ToutSocialBlock
+ *
+ * @todo 		Hide icon via props
+ * @todo 		Remove screen-reader-class via props
+ * 
  */
+
+use ToutSocialBlock\Classes as Classes;
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) { exit; }
@@ -30,19 +36,13 @@ register_activation_hook( __FILE__, array( 'ToutSocialBlock\Classes\Activator', 
 register_deactivation_hook( __FILE__, array( 'ToutSocialBlock\Classes\Deactivator', 'deactivate' ) );
 
 /**
- * Block Initializer.
- */
-require_once plugin_dir_path( __FILE__ ) . 'src/init.php';
-
-/**
  * Initializes each class and hooks each class's 'hooks' method to init.
  */
-function tout_social_block_init() {
+function tout_social_block_init_classes() {
 
 	$classes = array();
 
-	// add class instances here
-	// $classes[] = new ExampleClass();
+	$classes[] = new Classes\Blocks();
 
 	if ( empty( $classes ) ) { return; }
 
@@ -52,6 +52,6 @@ function tout_social_block_init() {
 
 	}
 
-} // tout_social_block_init()
+} // tout_social_block_init_classes()
 
-add_action( 'plugins_loaded', 'tout_social_buttons_init' );
+add_action( 'plugins_loaded', 'tout_social_block_init_classes' );
