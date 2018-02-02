@@ -90,7 +90,11 @@ registerBlockType(
 			textClass: {
 				type: 'string',
 				default: 'screen-reader-text'
-			}
+			},
+			buttonUrl: {
+				type: 'string',
+				default: ''
+			},
 		},
 
 		// The "edit" property must be a valid function.
@@ -146,14 +150,54 @@ registerBlockType(
 				),
 				<div className={ props.className }>
 					<ul className="tout-social-buttons">
-						{ !! props.attributes.email && ( <Email { ...props }/> )}
-						{ !! props.attributes.facebook && ( <Facebook { ...props }/> )}
-						{ !! props.attributes.google && ( <Google { ...props }/> )}
-						{ !! props.attributes.linkedin && ( <LinkedIn { ...props }/> )}
-						{ !! props.attributes.pinterest && ( <Pinterest { ...props }/> )}
-						{ !! props.attributes.stumbleupon && ( <Stumbleupon { ...props }/> )}
-						{ !! props.attributes.tumblr && ( <Tumblr { ...props }/> )}
-						{ !! props.attributes.twitter && ( <Twitter { ...props }/> )}
+						{ !! props.attributes.email && (
+							<Email attributes={{
+								colorClass: props.attributes.colorClass,
+								textClass: props.attributes.textClass,
+							}}/>
+						)}
+						{ !! props.attributes.facebook && (
+							<Facebook attributes={{
+								colorClass: props.attributes.colorClass,
+								textClass: props.attributes.textClass,
+							}} />
+						)}
+						{ !! props.attributes.google && (
+							<Google attributes={{
+								colorClass: props.attributes.colorClass,
+								textClass: props.attributes.textClass,
+							}} />
+						)}
+						{ !! props.attributes.linkedin && (
+							<LinkedIn attributes={{
+								colorClass: props.attributes.colorClass,
+								textClass: props.attributes.textClass,
+							}} />
+						)}
+						{ !! props.attributes.pinterest && (
+							<Pinterest attributes={{
+								colorClass: props.attributes.colorClass,
+								textClass: props.attributes.textClass,
+							}} />
+						)}
+						{ !! props.attributes.stumbleupon && (
+							<Stumbleupon attributes={{
+								colorClass: props.attributes.colorClass,
+								textClass: props.attributes.textClass,
+							}} />
+						)}
+						{ !! props.attributes.tumblr && (
+							<Tumblr attributes={{
+								colorClass: props.attributes.colorClass,
+								textClass: props.attributes.textClass,
+							}} />
+						)}
+						{ !! props.attributes.twitter && (
+							<Twitter attributes={{
+								colorClass: props.attributes.colorClass,
+								textClass: props.attributes.textClass,
+							}} />
+						)}
 					</ul>
 				</div>
 			];
@@ -161,17 +205,68 @@ registerBlockType(
 
 		// The "save" property must be specified and must be a valid function.
 		save: function( props ) {
+
+			console.log( tsb );
+
 			return (
 				<div className={ props.className }>
 					<ul className="tout-social-buttons">
-						{ !! props.attributes.email && ( <Email { ...props } /> )}
-						{ !! props.attributes.facebook && ( <Facebook { ...props }/> )}
-						{ !! props.attributes.google && ( <Google { ...props }/> )}
-						{ !! props.attributes.linkedin && ( <LinkedIn { ...props }/> )}
-						{ !! props.attributes.pinterest && ( <Pinterest { ...props }/> )}
-						{ !! props.attributes.stumbleupon && ( <Stumbleupon { ...props }/> )}
-						{ !! props.attributes.tumblr && ( <Tumblr { ...props }/> )}
-						{ !! props.attributes.twitter && ( <Twitter { ...props }/> )}
+						{ !! props.attributes.email && (
+							<Email attributes={{
+								buttonUrl: `mailto:?subject=${ encodeURIComponent( tsb.postTitle ) }&body=${ encodeURIComponent( tsb.postExcerpt ) }%0A%0A${ encodeURIComponent( tsb.postLink ) }`,
+								colorClass: props.attributes.colorClass,
+								textClass: props.attributes.textClass,
+							}}/>
+						)}
+						{ !! props.attributes.facebook && (
+							<Facebook attributes={{
+								buttonUrl: `https://www.facebook.com/sharer/sharer.php?u=${ encodeURIComponent( tsb.postLink ) }`,
+								colorClass: props.attributes.colorClass,
+								textClass: props.attributes.textClass,
+							}}/>
+						)}
+						{ !! props.attributes.google && (
+							<Google attributes={{
+								buttonUrl: `https://plus.google.com/share?url=${ encodeURIComponent( tsb.postLink ) }`,
+								colorClass: props.attributes.colorClass,
+								textClass: props.attributes.textClass,
+							}}/>
+						)}
+						{ !! props.attributes.linkedin && (
+							<LinkedIn attributes={{
+								buttonUrl: `https://www.linkedin.com/shareArticle?url=${ encodeURIComponent( tsb.postLink ) }&mini=true&title=${ encodeURIComponent( tsb.postTitle ) }&summary=${ encodeURIComponent( tsb.postExcerpt ) }`,
+								colorClass: props.attributes.colorClass,
+								textClass: props.attributes.textClass,
+							}}/>
+						)}
+						{ !! props.attributes.pinterest && (
+							<Pinterest attributes={{
+								buttonUrl: `https://pinterest.com/pin/create/button/?url=${ encodeURIComponent( tsb.postLink ) }&description=${ encodeURIComponent( tsb.postExcerpt ) }&media=${ encodeURIComponent( tsb.postImage ) }`,
+								colorClass: props.attributes.colorClass,
+								textClass: props.attributes.textClass,
+							}}/>
+						)}
+						{ !! props.attributes.stumbleupon && (
+							<Stumbleupon attributes={{
+								buttonUrl: `http://www.stumbleupon.com/submit?url=${ encodeURIComponent( tsb.postLink ) }&title=${ encodeURIComponent( tsb.postTitle ) }`,
+								colorClass: props.attributes.colorClass,
+								textClass: props.attributes.textClass,
+							}}/>
+						)}
+						{ !! props.attributes.tumblr && (
+							<Tumblr attributes={{
+								buttonUrl: `https://www.tumblr.com/widgets/share/tool?canonicalUrl=${ encodeURIComponent( tsb.postLink ) }&title=${ encodeURIComponent( tsb.postTitle ) }`,
+								colorClass: props.attributes.colorClass,
+								textClass: props.attributes.textClass,
+							}}/>
+						)}
+						{ !! props.attributes.twitter && (
+							<Twitter attributes={{
+								buttonUrl: `https://twitter.com/intent/tweet?url=${ encodeURIComponent( tsb.postLink ) }&text=${ encodeURIComponent( tsb.postTitle ) }`,
+								colorClass: props.attributes.colorClass,
+								textClass: props.attributes.textClass,
+							}}/>
+						)}
 					</ul>
 				</div>
 			);

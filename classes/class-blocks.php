@@ -73,6 +73,18 @@ class Blocks {
 			//filemtime( plugin_dir_path( __DIR__ ) . 'editor.css' ) // Version: filemtime — Gets file modification time.
 		);
 
+		// Localize
+		wp_localize_script(
+			'tout_social_block-block-js',
+			'tsb',
+			array(
+				'postLink' => get_permalink(),
+				'postExcerpt' => get_the_excerpt(),
+				'postTitle' => get_the_title(),
+				'postImage' => wp_get_attachment_url( get_post_thumbnail_id() )
+			)
+		);
+
 	} // editor_assets()
 
 } // class
