@@ -5,7 +5,7 @@
  * Description: 			Adds a social sharing button block.
  * Author: 					slushman
  * Author URI: 				https://www.slushman.com/
- * GitHub Theme URI: 		https://github.com/slushman/tout-social-buttons
+ * GitHub Theme URI: 		https://github.com/slushman/tout-social-block
  * Github Branch: 			master
  * Version: 				1.0.0
  * License: 				GPL2+
