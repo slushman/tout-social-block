@@ -45,7 +45,7 @@ class Blocks {
 			'tout_social_block-style-css', // Handle.
 			plugin_dir_url( dirname( __FILE__ ) ) . 'dist/blocks.style.build.css', // Block style CSS.
 			array( 'wp-blocks' ) // Dependency to include the CSS after it.
-			// filemtime( plugin_dir_path( dirname( __FILE__ ) ) . 'editor.css' ) // Version: filemtime — Gets file modification time.
+			//filemtime( plugin_dir_path( __DIR__ ) . 'editor.css' ) // Version: filemtime — Gets file modification time.
 		);
 
 	} // block_assets()
@@ -62,7 +62,7 @@ class Blocks {
 			'tout_social_block-block-js', // Handle.
 			plugin_dir_url( dirname( __FILE__ ) ) . 'dist/blocks.build.js', // Block.build.js: We register the block here. Built with Webpack.
 			array( 'wp-blocks', 'wp-i18n', 'wp-element' ) // Dependencies, defined above.
-			// filemtime( plugin_dir_path( dirname( __FILE__ ) ) . 'block.js' ) // Version: filemtime — Gets file modification time.
+			//filemtime( plugin_dir_path( __DIR__ ) . 'block.js' ) // Version: filemtime — Gets file modification time.
 		);
 
 		// Styles.
@@ -70,7 +70,7 @@ class Blocks {
 			'tout_social_block-block-editor-css', // Handle.
 			plugin_dir_url( dirname( __FILE__ ) ) . 'dist/blocks.editor.build.css', // Block editor CSS.
 			array( 'wp-edit-blocks' ) // Dependency to include the CSS after it.
-			// filemtime( plugin_dir_path( dirname( __FILE__ ) ) . 'editor.css' ) // Version: filemtime — Gets file modification time.
+			//filemtime( plugin_dir_path( __DIR__ ) . 'editor.css' ) // Version: filemtime — Gets file modification time.
 		);
 
 	} // editor_assets()

@@ -10,6 +10,7 @@ import './style.scss';
 import './editor.scss';
 import Sortable from 'react-sortablejs';
 import SharingButton from './sharing-button.js';
+import Inspector from './inspector.js';
 import Email from './email.js';
 import Facebook from './facebook.js';
 import Google from './google.js';
@@ -23,20 +24,7 @@ const { __ } = wp.i18n; // Import __() from wp.i18n
 const {
 	registerBlockType,
 	Editable,
-	AlignmentToolbar,
-	BlockControls,
-	BlockAlignmentToolbar,
-	InspectorControls,
-	BlockDescription
 } = wp.blocks; // Import registerBlockType() from wp.blocks
-const {
-	Toolbar,
-	Button,
-	Tooltip,
-	PanelBody,
-	PanelRow,
-	FormToggle,
-} = wp.components;
 
 /**
  * Register: aa Gutenberg Block.
@@ -50,235 +38,143 @@ const {
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered; otherwise `undefined`.
  */
-registerBlockType( 'tsb/tout-social-block', {
-	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-	title: __( 'Tout.Social', 'tout-social-block' ), // Block title.
-	icon: 'share', // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
-	category: 'common', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
-	keywords: [
-		__( 'Sharing' ),
-		__( 'Social' ),
-		__( 'Buttons' ),
-	],
-	attributes: {
-		email: {
-			type: 'boolean',
-			default: true,
+registerBlockType(
+	'tsb/tout-social-block',
+	{
+		// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
+		title: __( 'Tout.Social', 'tout-social-block' ), // Block title.
+		icon: 'share', // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
+		category: 'common', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
+		keywords: [
+			__( 'Sharing' ),
+			__( 'Social' ),
+			__( 'Buttons' ),
+		],
+		attributes: {
+			email: {
+				type: 'boolean',
+				default: true,
+			},
+			facebook: {
+				type: 'boolean',
+				default: true,
+			},
+			google: {
+				type: 'boolean',
+				default: true,
+			},
+			linkedin: {
+				type: 'boolean',
+				default: true,
+			},
+			pinterest: {
+				type: 'boolean',
+				default: true,
+			},
+			stumbleupon: {
+				type: 'boolean',
+				default: true,
+			},
+			tumblr: {
+				type: 'boolean',
+				default: true,
+			},
+			twitter: {
+				type: 'boolean',
+				default: true,
+			},
+			colorClass: {
+				type: 'string',
+				default: 'content-color-white-on-brand'
+			},
+			textClass: {
+				type: 'string',
+				default: 'screen-reader-text'
+			}
 		},
-		facebook: {
-			type: 'boolean',
-			default: true,
-		},
-		google: {
-			type: 'boolean',
-			default: true,
-		},
-		linkedin: {
-			type: 'boolean',
-			default: true,
-		},
-		pinterest: {
-			type: 'boolean',
-			default: true,
-		},
-		stumbleupon: {
-			type: 'boolean',
-			default: true,
-		},
-		tumblr: {
-			type: 'boolean',
-			default: true,
-		},
-		twitter: {
-			type: 'boolean',
-			default: true,
-		},
-	},
 
-	// The "edit" property must be a valid function.
-	edit: function( props ) {
-		const toggleEmail = () => {
-			props.setAttributes( { email: ! props.attributes.email } );
-		}
-		const toggleFacebook = () => {
-			props.setAttributes( { facebook: ! props.attributes.facebook } );
-		}
-		const toggleGoogle = () => {
-			props.setAttributes( { google: ! props.attributes.google } );
-		}
-		const toggleLinkedIn = () => {
-			props.setAttributes( { linkedin: ! props.attributes.linkedin } );
-		}
-		const togglePinterest = () => {
-			props.setAttributes( { pinterest: ! props.attributes.pinterest } );
-		}
-		const toggleStumbleupon = () => {
-			props.setAttributes( { stumbleupon: ! props.attributes.stumbleupon } );
-		}
-		const toggleTumblr = () => {
-			props.setAttributes( { tumblr: ! props.attributes.tumblr } );
-		}
-		const toggleTwitter = () => {
-			props.setAttributes( { twitter: ! props.attributes.twitter } );
-		}
-		// Creates a <p class='wp-block-cgb-block-tout-social-block'></p>.
-		return [
-			!! props.focus && (
-			  <InspectorControls key="inspector">
+		// The "edit" property must be a valid function.
+		edit: props => {
+			const toggleEmail = () => {
+				props.setAttributes( { email: ! props.attributes.email } );
+			}
+			const toggleFacebook = () => {
+				props.setAttributes( { facebook: ! props.attributes.facebook } );
+			}
+			const toggleGoogle = () => {
+				props.setAttributes( { google: ! props.attributes.google } );
+			}
+			const toggleLinkedIn = () => {
+				props.setAttributes( { linkedin: ! props.attributes.linkedin } );
+			}
+			const togglePinterest = () => {
+				props.setAttributes( { pinterest: ! props.attributes.pinterest } );
+			}
+			const toggleStumbleupon = () => {
+				props.setAttributes( { stumbleupon: ! props.attributes.stumbleupon } );
+			}
+			const toggleTumblr = () => {
+				props.setAttributes( { tumblr: ! props.attributes.tumblr } );
+			}
+			const toggleTwitter = () => {
+				props.setAttributes( { twitter: ! props.attributes.twitter } );
+			}
+			const toggleColorClass = () => {
+				props.setAttributes( { colorClass: ! props.attributes.colorClass } );
+			}
+			const toggleTextClass = () => {
+				props.setAttributes( { textClass: ! props.attributes.textClass } );
+			}
 
-				<BlockDescription>
-				  <p>{ __( 'Let others tout your content! Select icons below.' ) }</p>
-				</BlockDescription>
+			return [
+				!! props.focus && (
+					<Inspector
+						{ ...{
+							toggleEmail,
+							toggleFacebook,
+							toggleGoogle,
+							toggleLinkedIn,
+							togglePinterest,
+							toggleStumbleupon,
+							toggleTumblr,
+							toggleTwitter,
+							toggleColorClass,
+							toggleTextClass,
+							...props
+						  } }
+					/>
+				),
+				<div className={ props.className }>
+					<ul className="tout-social-buttons">
+						{ !! props.attributes.email && ( <Email { ...props }/> )}
+						{ !! props.attributes.facebook && ( <Facebook { ...props }/> )}
+						{ !! props.attributes.google && ( <Google { ...props }/> )}
+						{ !! props.attributes.linkedin && ( <LinkedIn { ...props }/> )}
+						{ !! props.attributes.pinterest && ( <Pinterest { ...props }/> )}
+						{ !! props.attributes.stumbleupon && ( <Stumbleupon { ...props }/> )}
+						{ !! props.attributes.tumblr && ( <Tumblr { ...props }/> )}
+						{ !! props.attributes.twitter && ( <Twitter { ...props }/> )}
+					</ul>
+				</div>
+			];
+		},
 
-				<PanelBody
-					title={ __( 'Icons' ) }
-				>
-					<PanelRow>
-						<label
-							htmlFor="email-form-toggle"
-							className="blocks-base-control__label"
-						>
-							{ __( 'Email' ) }
-						</label>
-						<FormToggle
-							id="email-form-toggle"
-							label={ __( 'Email' ) }
-							checked={ !! props.attributes.email }
-							onChange={ toggleEmail }
-						/>
-					</PanelRow>
-					<PanelRow>
-						<label
-							htmlFor="facebook-form-toggle"
-							className="blocks-base-control__label"
-						>
-							{ __( 'Facebook' ) }
-						</label>
-						<FormToggle
-							id="facebook-form-toggle"
-							label={ __( 'Facebook' ) }
-							checked={ !! props.attributes.facebook }
-							onChange={ toggleFacebook }
-						/>
-					</PanelRow>
-					<PanelRow>
-						<label
-							htmlFor="google-form-toggle"
-							className="blocks-base-control__label"
-						>
-							{ __( 'Google' ) }
-						</label>
-						<FormToggle
-							id="google-form-toggle"
-							label={ __( 'Google' ) }
-							checked={ !! props.attributes.google }
-							onChange={ toggleGoogle }
-						/>
-					</PanelRow>
-					<PanelRow>
-						<label
-							htmlFor="linkedin-form-toggle"
-							className="blocks-base-control__label"
-						>
-							{ __( 'LinkedIn' ) }
-						</label>
-						<FormToggle
-							id="linkedin-form-toggle"
-							label={ __( 'LinkedIn' ) }
-							checked={ !! props.attributes.linkedin }
-							onChange={ toggleLinkedIn }
-						/>
-					</PanelRow>
-					<PanelRow>
-						<label
-							htmlFor="pinterest-form-toggle"
-							className="blocks-base-control__label"
-						>
-							{ __( 'Pinterest' ) }
-						</label>
-						<FormToggle
-							id="pinterest-form-toggle"
-							label={ __( 'Pinterest' ) }
-							checked={ !! props.attributes.pinterest }
-							onChange={ togglePinterest }
-						/>
-					</PanelRow>
-					<PanelRow>
-						<label
-							htmlFor="stumbleupon-form-toggle"
-							className="blocks-base-control__label"
-						>
-							{ __( 'Stumbleupon' ) }
-						</label>
-						<FormToggle
-							id="stumbleupon-form-toggle"
-							label={ __( 'Stumbleupon' ) }
-							checked={ !! props.attributes.stumbleupon }
-							onChange={ toggleStumbleupon }
-						/>
-					</PanelRow>
-					<PanelRow>
-						<label
-							htmlFor="tumblr-form-toggle"
-							className="blocks-base-control__label"
-						>
-							{ __( 'tumblr' ) }
-						</label>
-						<FormToggle
-							id="tumblr-form-toggle"
-							label={ __( 'tumblr' ) }
-							checked={ !! props.attributes.tumblr }
-							onChange={ toggleTumblr }
-						/>
-					</PanelRow>
-					<PanelRow>
-						<label
-							htmlFor="twitter-form-toggle"
-							className="blocks-base-control__label"
-						>
-							{ __( 'Twitter' ) }
-						</label>
-						<FormToggle
-							id="twitter-form-toggle"
-							label={ __( 'Twitter' ) }
-							checked={ !! props.attributes.twitter }
-							onChange={ toggleTwitter }
-						/>
-					</PanelRow>
-				</PanelBody>
-			  </InspectorControls>
-			),
-			<div className={ props.className }>
-				<ul className="tout-social-buttons">
-					{ !! props.attributes.email && ( <Email /> )}
-					{ !! props.attributes.facebook && ( <Facebook /> )}
-					{ !! props.attributes.google && ( <Google /> )}
-					{ !! props.attributes.linkedin && ( <LinkedIn /> )}
-					{ !! props.attributes.pinterest && ( <Pinterest /> )}
-					{ !! props.attributes.stumbleupon && ( <Stumbleupon /> )}
-					{ !! props.attributes.tumblr && ( <Tumblr /> )}
-					{ !! props.attributes.twitter && ( <Twitter /> )}
-				</ul>
-			</div>
-		];
-	},
-
-	// The "save" property must be specified and must be a valid function.
-	save: function( props ) {
-		return (
-			<div className={ props.className }>
-				<ul className="active-buttons">
-					<li>
-						<a href="https://www.facebook.com">Facebook</a>
-					</li>
-					<li>
-						<a href="https://www.twitter.com">Twitter</a>
-					</li>
-					<li>
-						<a href="mailto:test@test.com">Email</a>
-					</li>
-				</ul>
-			</div>
-		);
-	},
-} );
+		// The "save" property must be specified and must be a valid function.
+		save: function( props ) {
+			return (
+				<div className={ props.className }>
+					<ul className="tout-social-buttons">
+						{ !! props.attributes.email && ( <Email { ...props } /> )}
+						{ !! props.attributes.facebook && ( <Facebook { ...props }/> )}
+						{ !! props.attributes.google && ( <Google { ...props }/> )}
+						{ !! props.attributes.linkedin && ( <LinkedIn { ...props }/> )}
+						{ !! props.attributes.pinterest && ( <Pinterest { ...props }/> )}
+						{ !! props.attributes.stumbleupon && ( <Stumbleupon { ...props }/> )}
+						{ !! props.attributes.tumblr && ( <Tumblr { ...props }/> )}
+						{ !! props.attributes.twitter && ( <Twitter { ...props }/> )}
+					</ul>
+				</div>
+			);
+		},
+	}
+);

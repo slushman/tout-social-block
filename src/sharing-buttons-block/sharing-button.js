@@ -8,12 +8,6 @@
 
 import classnames from 'classnames';
 
-function getListItemClasses() {
-
-	return '';
-
-} // getListItemClasses()
-
 const SharingButton = ( { site, attributes, icon } ) => {
 
 	return (
