@@ -4,6 +4,12 @@
  * Can include things like variables and mixins
  * that are used across the project.
 */
+.is-Hidden {
+  display: none; }
+
+.tout-social-text__icon {
+  margin-left: 0.25em; }
+
 .tout-social-buttons {
   list-style: none;
   list-style-type: none !important;
@@ -24,7 +30,7 @@
     outline-color: inherit;
     outline-width: 5px; }
 
-.tout-social-icon {
+.tout-social-link svg {
   height: 1.5em;
   width: 1.5em; }
 
@@ -38,96 +44,91 @@
 .content-color-brand-on-white .tout-social-link {
   background-color: #fff; }
 
-.content-color-brand-on-white .tout-social-link-email {
+.content-color-brand-on-white .tout-social-link__email,
+.content-color-brand-on-white .tout-social-link__email:hover {
   color: #000; }
 
-.content-color-brand-on-white .tout-social-icon-email {
+.content-color-brand-on-white .tout-social-icon__email {
   fill: #000; }
 
-.content-color-brand-on-white .tout-social-link-facebook {
+.content-color-brand-on-white .tout-social-link__facebook,
+.content-color-brand-on-white .tout-social-link__facebook:hover {
   color: #3b5998; }
 
-.content-color-brand-on-white .tout-social-icon-facebook {
+.content-color-brand-on-white .tout-social-icon__facebook {
   fill: #3b5998; }
 
-.content-color-brand-on-white .tout-social-link-google {
+.content-color-brand-on-white .tout-social-link__google,
+.content-color-brand-on-white .tout-social-link__google:hover {
   color: #dd4b39; }
 
-.content-color-brand-on-white .tout-social-icon-google {
+.content-color-brand-on-white .tout-social-icon__google {
   fill: #dd4b39; }
 
-.content-color-brand-on-white .tout-social-link-linkedin {
+.content-color-brand-on-white .tout-social-link__linkedin,
+.content-color-brand-on-white .tout-social-link__linkedin:hover {
   color: #0077b5; }
 
-.content-color-brand-on-white .tout-social-icon-linkedin {
+.content-color-brand-on-white .tout-social-icon__linkedin {
   fill: #0077b5; }
 
-.content-color-brand-on-white .tout-social-link-pinterest {
+.content-color-brand-on-white .tout-social-link__pinterest,
+.content-color-brand-on-white .tout-social-link__pinterest:hover {
   color: #bd081c; }
 
-.content-color-brand-on-white .tout-social-icon-pinterest {
+.content-color-brand-on-white .tout-social-icon__pinterest {
   fill: #bd081c; }
 
-.content-color-brand-on-white .tout-social-link-stumbleupon {
+.content-color-brand-on-white .tout-social-link__stumbleupon,
+.content-color-brand-on-white .tout-social-link__stumbleupon:hover {
   color: #eb4924; }
 
-.content-color-brand-on-white .tout-social-icon-stumbleupon {
+.content-color-brand-on-white .tout-social-icon__stumbleupon {
   fill: #eb4924; }
 
-.content-color-brand-on-white .tout-social-link-tumblr {
+.content-color-brand-on-white .tout-social-link__tumblr,
+.content-color-brand-on-white .tout-social-link__tumblr:hover {
   color: #35465c; }
 
-.content-color-brand-on-white .tout-social-icon-tumblr {
+.content-color-brand-on-white .tout-social-icon__tumblr {
   fill: #35465c; }
 
-.content-color-brand-on-white .tout-social-link-twitter {
+.content-color-brand-on-white .tout-social-link__twitter,
+.content-color-brand-on-white .tout-social-link__twitter:hover {
   color: #1da1f2; }
 
-.content-color-brand-on-white .tout-social-icon-twitter {
+.content-color-brand-on-white .tout-social-icon__twitter {
   fill: #1da1f2; }
 
-.content-color-white-on-brand .tout-social-link-email,
-.content-color-white-on-brand .tout-social-link-facebook,
-.content-color-white-on-brand .tout-social-link-google,
-.content-color-white-on-brand .tout-social-link-linkedin,
-.content-color-white-on-brand .tout-social-link-pinterest,
-.content-color-white-on-brand .tout-social-link-stumbleupon,
-.content-color-white-on-brand .tout-social-link-tumblr,
-.content-color-white-on-brand .tout-social-link-twitter {
+.content-color-white-on-brand .tout-social-link,
+.content-color-white-on-brand .tout-social-link:hover {
   color: #fff; }
 
-.content-color-white-on-brand .tout-social-icon-email,
-.content-color-white-on-brand .tout-social-icon-facebook,
-.content-color-white-on-brand .tout-social-icon-google,
-.content-color-white-on-brand .tout-social-icon-linkedin,
-.content-color-white-on-brand .tout-social-icon-pinterest,
-.content-color-white-on-brand .tout-social-icon-stumbleupon,
-.content-color-white-on-brand .tout-social-icon-tumblr,
-.content-color-white-on-brand .tout-social-icon-twitter {
+.content-color-white-on-brand .tout-social-icon {
   fill: #fff; }
 
-.content-color-white-on-brand .tout-social-link-email {
+.content-color-white-on-brand .tout-social-link__email {
   background-color: #000; }
 
-.content-color-white-on-brand .tout-social-link-facebook {
+.content-color-white-on-brand .tout-social-link__facebook {
   background-color: #3b5998; }
 
-.content-color-white-on-brand .tout-social-link-google {
+.content-color-white-on-brand .tout-social-link__google {
   background-color: #dd4b39; }
 
-.content-color-white-on-brand .tout-social-link-linkedin {
+.content-color-white-on-brand .tout-social-link__linkedin {
   background-color: #0077b5; }
 
-.content-color-white-on-brand .tout-social-link-pinterest {
+.content-color-white-on-brand .tout-social-link__pinterest {
   background-color: #bd081c; }
 
-.content-color-white-on-brand .tout-social-link-stumbleupon {
+.content-color-white-on-brand .tout-social-link__stumbleupon {
   background-color: #eb4924; }
 
-.content-color-white-on-brand .tout-social-link-tumblr {
+.content-color-white-on-brand .tout-social-link__tumblr {
   background-color: #35465c; }
 
-.content-color-white-on-brand .tout-social-link-twitter {
+.content-color-white-on-brand .tout-social-link__twitter {
   background-color: #1da1f2; }
 
 /**

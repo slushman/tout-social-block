@@ -7,13 +7,11 @@
  */
 
 import classnames from 'classnames';
-const { Component } = wp.element;
 
-const { __ } = wp.i18n;
-const {
-	InspectorControls,
-	BlockDescription
-} = wp.blocks; // Import from wp.blocks
+const { Component } = wp.element; // Import from wp.element
+const { __ } = wp.i18n; // Import from wp.i18n
+const { InspectorControls } = wp.blocks; // Import from wp.blocks
+const { SelectControl } = InspectorControls; // Import from wp.blocks.InspectorControls
 const {
 	Toolbar,
 	Button,
@@ -31,11 +29,6 @@ export default class Inspector extends Component {
 	render() {
 		return (
 			<InspectorControls key="inspector">
-
-				<BlockDescription>
-					<p>{ __( 'Let others tout your content! Select icons below.' ) }</p>
-				</BlockDescription>
-
 				<PanelBody title={ __( 'Icons' ) }>
 					<PanelRow>
 						<label
@@ -150,7 +143,46 @@ export default class Inspector extends Component {
 						/>
 					</PanelRow>
 				</PanelBody>
-				
+
+				<PanelBody title={ __( 'Style' ) }>
+					<SelectControl
+						instanceId='tout-social-block-button-style'
+						label={ __( 'Button Style' ) }
+						options={[
+							{
+								label: __( 'White on Brand' ),
+								value: 'content-color-white-on-brand',
+							},
+							{
+								label: __( 'Brand on White' ),
+								value: 'content-color-brand-on-white',
+							},
+						]}
+						onChange={ this.props.changeColorClass }
+						value={ `${this.props.attributes.colorClass}` }
+					/>
+					<SelectControl
+						instanceId='tout-social-block-button-content'
+						label={ __( 'Button Content' ) }
+						options={[
+							{
+								label: __( 'Icon Only' ),
+								value: 'icon-only',
+							},
+							{
+								label: __( 'Text Only' ),
+								value: 'text-only',
+							},
+							{
+								label: __( 'Icon and Text' ),
+								value: 'icon-and-text',
+							},
+						]}
+						onChange={ this.props.changeButtonContent }
+						value={ `${this.props.attributes.buttonContent}` }
+					/>
+				</PanelBody>
+
 			</InspectorControls>
 		);
 	}

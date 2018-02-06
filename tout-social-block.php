@@ -14,9 +14,6 @@
  * @since 					1.0.0
  * @package 				ToutSocialBlock
  *
- * @todo 		Change button menu item class by props & Select Inspector element
- * @todo 		Change button text class by props & Selector Inspector element
- * @todo 		Change button icon visibility by props & Selector Inspector element
  */
 
 use ToutSocialBlock\Classes as Classes;
