@@ -14,6 +14,11 @@
  * @since 					1.0.0
  * @package 				ToutSocialBlock
  *
+ * @todo 		Add block sorting.
+ * @todo 		Add a second block - Click to Tweet.
+ *
+ * Try testing addig more buttons from another plugin using the wp.hooks system.
+ * https://github.com/WordPress/gutenberg/blob/5d8a54e4a1d21e66061aa9b83e4f7b6793bf4bcc/blocks/hooks/custom-class-name.js
  */
 
 use ToutSocialBlock\Classes as Classes;

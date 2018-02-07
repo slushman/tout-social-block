@@ -50,7 +50,7 @@ registerBlockType(
 			__( 'Social' ),
 			__( 'Buttons' ),
 		],
-		description: __( 'Let others tout your content! Select icons below.' ),
+		description: __( 'Let your audience tout your content! Select the icons, styling, and button content below.' ),
 		attributes: {
 			email: {
 				type: 'boolean',
